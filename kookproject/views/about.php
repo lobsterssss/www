@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-
+<?php
+head();
+?>	
 
 <body>
     <?php

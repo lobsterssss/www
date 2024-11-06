@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-
+<?php
+    function head() {
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css"> 
+    <link rel="stylesheet" type="text/css" href="./public/css/style.css"> 
     <title>MediTurn</title>
     <script>
 
@@ -15,23 +15,4 @@
         }
     </script>
 </head>
-
-<body>
-	<?php
-
-    navigation();
-
-?>	
-
-
-	<div class="about-section">
-		<h2>Veelgestelde vragen</h2>
-		<p class="AS">  </p>
-			
-			</li>
-		</ul>
-	</div>
-
-</body>
-
-</html>
+<?php } ?>
