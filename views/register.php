@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-</head>
+<?php head(); ?>
 <body>
 <?= navigation(); ?>
     <main>
         <div>
             <h1>Register</h1>
-            <form hx-post="/register" hx-target="#target">
+            <form hx-post="./register" hx-target="#target">
                 <p id="target"></p>
                 <label for="userEmail">e-mail</label>
                 <input name="userEmail" id="userEmail" type="email" placeholder="Email">

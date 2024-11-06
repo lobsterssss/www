@@ -25,8 +25,8 @@ get('/kookproject/about', 'views/about.php');
 get('/kookproject/login', 'views/login.php');
 post('/kookproject/login', 'php/login.php');
 
-get('/kookproject/register', 'views/about.php');
-post('/kookproject/login', 'php/register.php');
+get('/kookproject/register', 'views/register.php');
+post('/kookproject/register', 'php/register.php');
 
 
 // ##################################################
