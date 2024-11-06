@@ -33,6 +33,12 @@ post('/kookproject/update_schedule', path_to_include: 'views/update_schedule.php
 get('/kookproject/about', path_to_include: 'views/about.php');
 
 
+get('/kookproject/login', 'views/login.php');
+post('/kookproject/login', 'php/login.php');
+
+get('/kookproject/register', 'views/about.php');
+post('/kookproject/login', 'php/register.php');
+
 
 // ##################################################
 // ##################################################
