@@ -9,12 +9,12 @@ class Database {
 
    function __construct()
     {
-    $hostname = '195.168.0.3:3306';
+    // $hostname = '195.168.0.3:3306';
     $username = 'root';
     $password = '';
-    $dbname = 'test_exam';
+    $dbname = 'test_kookproject';
     $this->binary = hex2bin('000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f');
-    $this->conn = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+    $this->conn = new PDO("mysql:dbname=$dbname", $username, $password);
    }
 
    function close()
@@ -58,6 +58,14 @@ class Database {
                 $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
             return $result;
         }
+    }
+
+    
+    function get_schedule()
+    {
+        //check validation AND users.verified = 1
+        $result = $this->conn->query("SELECT * FROM schedule")->fetchAll();
+        return $result;
     }
 
 

@@ -18,9 +18,11 @@ get('/kookproject', 'views/index.php');
 
 get('/kookproject/medicijnen', 'views/drugs.php');
 
-get('/kookproject/contact', 'views/contact.php');
+get('/kookproject/contact', path_to_include: 'views/contact.php');
 
-get('/kookproject/about', 'views/about.php');
+get('/kookproject/schedule', path_to_include: 'views/schedule.php');
+
+get('/kookproject/about', path_to_include: 'views/about.php');
 
 
 // ##################################################
