@@ -14,13 +14,13 @@ include __DIR__.'/component/head.php';
 // Static GET
 // In the URL -> http://localhost
 // The output -> Index
-get('/', 'views/index.php');
+get('/kookproject', 'views/index.php');
 
-get('/medicijnen', 'views/drugs.php');
+get('/kookproject/medicijnen', 'views/drugs.php');
 
-get('/contact', 'views/contact.php');
+get('/kookproject/contact', 'views/contact.php');
 
-get('/about', 'views/about.php');
+get('/kookproject/about', 'views/about.php');
 
 
 // ##################################################
