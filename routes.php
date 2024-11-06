@@ -22,6 +22,12 @@ get('/kookproject/contact', 'views/contact.php');
 
 get('/kookproject/about', 'views/about.php');
 
+get('/kookproject/login', 'views/login.php');
+post('/kookproject/login', 'php/login.php');
+
+get('/kookproject/register', 'views/about.php');
+post('/kookproject/login', 'php/register.php');
+
 
 // ##################################################
 // ##################################################
