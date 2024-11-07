@@ -1,196 +1,164 @@
-<!DOCTYPE html>
-<html>
-
 <?php
-head();
+require_once 'database/database.php';
+
+// Initialize Database connection
+$db = new Database();
+
+
+// Fetch all patients and medications for the dropdown
+$patients = $db->get_all_patients();
+$medicijnen = $db->get_all_medicijnen();
+
+// Get existing schedule data
+$schedule = $db->get_schedule();
+
+// Get edit record if ID is provided
+$editRecord = null;
+if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
+    $editRecord = $db->get_schedule_by_id($_GET['edit']);
+}
+
 ?>
 
+<!DOCTYPE html>
+<html>
+<?php head(); ?>
+
 <body>
-    <?php
+    <?php navigation(); ?>
 
-    navigation();
+    <div class="container mt-4">
+        <!-- Create/Edit Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3><?php echo $editRecord ? 'Edit Schedule' : 'Create New Schedule'; ?></h3>
+            </div>
+            <div class="card-body">
+                <!-- Updated Form Action to 'create_schedule.php' -->
+                <form method="POST" action="./create_schedule">
+                    <input type="hidden" name="action" value="<?php echo $editRecord ? 'update' : 'create'; ?>">
+                    <?php if ($editRecord): ?>
+                        <input type="hidden" name="id" value="<?php echo $editRecord['id']; ?>">
+                    <?php endif; ?>
 
-    $schedule = new Database();
-    $schema = $schedule->get_schedule();
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="patient_id" class="form-label">Patient</label>
+                            <select name="patient_id" class="form-control" required>
+                                <option value="">Select Patient</option>
+                                <?php foreach ($patients as $patient): ?>
+                                    <option value="<?php echo htmlspecialchars($patient['patient_id']); ?>"
+                                        <?php echo $editRecord && $editRecord['patient_id'] == $patient['patient_id'] ? 'selected' : ''; ?>>
+                                        <?php echo htmlspecialchars($patient['patient_naam']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
 
+                        <div class="col-md-4 mb-3">
+                            <label for="medicijn_id" class="form-label">Medicijn</label>
+                            <select name="medicijn_id" class="form-control" required>
+                                <option value="">Select Medicijn</option>
+                                <?php
+                                foreach ($medicijnen as $medicijn) {
+                                    $selected = ($editRecord && $editRecord['medicijn_id'] == $medicijn['medicijn_id']) ? 'selected' : '';
+                                    echo "<option value='{$medicijn['medicijn_id']}' {$selected}>{$medicijn['medicijn_naam']}</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
 
-    ?>
+                        <div class="col-md-4 mb-3">
+                            <label for="dosering" class="form-label">Dosering</label>
+                            <input type="number" name="dosering" class="form-control"
+                                value="<?php echo $editRecord ? $editRecord['dosering'] : ''; ?>" required>
+                        </div>
+                    </div>
 
-    <div class="table-container">
-        <div class="table-responsive">
-            <table class="table" id="searchTable">
-                <thead>
-                    <tr>
-                        <th scope="col">Patient</th>
-                        <th scope="col">Medicijn</th>
-                        <th scope="col">Dosering</th>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Tijdstip</th>
-                        <th scope="col">Bewerken</th>
-                        <th scope="col">Verwijderen</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Static Data Row 1 -->
-                    <tr>
-                        <td> <select>
-                                <option value="optionText1">
-                                    Option Text 1
-                                </option>
-                                <option value="optionText2">
-                                    Option Text 2
-                                </option>
-                                <option value="optionText3">
-                                    Option Text 3
-                                </option>
-                            </select></td>
-                        <td><select>
-                                <option value="optionText1">
-                                    Option Text 1
-                                </option>
-                                <option value="optionText2">
-                                    Option Text 2
-                                </option>
-                                <option value="optionText3">
-                                    Option Text 3
-                                </option>
-                            </select></td>
-                        <td><input type="number" name="number" value="" /></td>
-                        <td>
-                            <input type="date" class="form-control" name="lesbloktijdeind" required>
-                        </td>
-                        <td>
-                            <input type="time" class="form-control" name="lesbloktijdeind" required>
-                        </td>
-                        <td><a href="update.php?id=1" class="btn btn-success">Bewerken</a></td>
-                        <td>
-                            <form action="../core/delete.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this car?')">
-                                <input type="hidden" name="auto_id" value="1">
-                                <button type="submit" class="btn btn-danger">Verwijderen</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <!-- Static Data Row 2 -->
-                    <tr>
-                        <td> <select>
-                                <option value="optionText1">
-                                    Option Text 1
-                                </option>
-                                <option value="optionText2">
-                                    Option Text 2
-                                </option>
-                                <option value="optionText3">
-                                    Option Text 3
-                                </option>
-                            </select></td>
-                        <td><select>
-                                <option value="optionText1">
-                                    Option Text 1
-                                </option>
-                                <option value="optionText2">
-                                    Option Text 2
-                                </option>
-                                <option value="optionText3">
-                                    Option Text 3
-                                </option>
-                            </select></td>
-                        <td><input type="number" name="number" value="" /></td>
-                        <td>
-                            <input type="date" class="form-control" name="lesbloktijdeind" required>
-                        </td>
-                        <td>
-                            <input type="time" class="form-control" name="lesbloktijdeind" required>
-                        </td>
-                        <td><a href="update.php?id=1" class="btn btn-success">Bewerken</a></td>
-                        <td>
-                            <form action="../core/delete.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this car?')">
-                                <input type="hidden" name="auto_id" value="1">
-                                <button type="submit" class="btn btn-danger">Verwijderen</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                </tbody>
-                <div id="noResultsMessage" style="display: none;">Geen Auto's gevonden.</div>
-            </table>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="datum" class="form-label">Datum</label>
+                            <input type="date" name="datum" class="form-control"
+                                value="<?php echo $editRecord ? $editRecord['datum'] : ''; ?>" required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="tijdstip" class="form-label">Tijdstip</label>
+                            <input type="time" name="tijdstip" class="form-control"
+                                value="<?php echo $editRecord ? $editRecord['tijdstip'] : ''; ?>" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">
+                                <?php echo $editRecord ? 'Update' : 'Create'; ?>
+                            </button>
+                            <?php if ($editRecord): ?>
+                                <a href="<?php echo $_SERVER['PHP_SELF']; ?>" class="btn btn-secondary">Cancel</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <!-- Create auto button (optional) -->
-        <div class="row justify-content-end mb-3">
-            <div class="col-auto">
-                <a href="create.php">
-                    <button type="submit" class="btn btn-primary">Aanmaken</button>
-                </a>
+
+        <?php if (isset($_GET['message'])): ?>
+            <div class="alert <?php echo $_GET['message'] === 'deleted' ? 'alert-success' : 'alert-danger'; ?>">
+                <?php
+                echo $_GET['message'] === 'deleted' ? 'Schedule deleted successfully.' : 'Failed to delete schedule.';
+                ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Schedule Table -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Schedule Overview</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Patient</th>
+                                <th>Medicijn</th>
+                                <th>Dosering</th>
+                                <th>Datum</th>
+                                <th>Tijdstip</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($schedule as $row): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($row['patient_naam']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['medicijn_naam']); ?></td> <!-- Use medicijn_naam here -->
+                                    <td><?php echo htmlspecialchars($row['dosering']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['datum']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['tijdstip']); ?></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <!-- Redirecting form submission to delete_schedule.php -->
+                                            <form method="POST" action="./delete_schedule" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                <input type="hidden" name="id" value="<?php echo $row['schedule_id']; ?>">
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="table-container">
-        <!-- First Table (Existing Static Content) -->
-        <div class="table-responsive">
-            <table class="table" id="searchTable">
-                <thead>
-                    <tr>
-                        <th scope="col">Patient</th>
-                        <th scope="col">Medicijn</th>
-                        <th scope="col">Dosering</th>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Tijdstip</th>
-                        <th scope="col">Bewerken</th>
-                        <th scope="col">Verwijderen</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Static rows -->
-                    <!-- Replace or modify as needed -->
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Second Table (Dynamic Content from Schedule) -->
-        <div class="table-responsive">
-            <h3>Schedule</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Patient</th>
-                        <th scope="col">Medicijn</th>
-                        <th scope="col">Dosering</th>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Tijdstip</th>
-                        <th scope="col">Bewerken</th>
-                        <th scope="col">Verwijderen</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-
-                    // Loop through each schedule item and display in a table row
-                    foreach ($schedule as $row) {
-                        echo "<tr>
-                                    <td>{$row['patient_id']}</td>
-                                    <td>{$row['medicatie']}</td>
-                                    <td>{$row['dosering']}</td>
-                                    <td>{$row['datum']}</td>
-                                    <td>{$row['tijdstip']}</td>
-                                    <td><a href='update.php?id={$row['id']}' class='btn btn-success'>Bewerken</a></td>
-                                    <td>
-                                        <form action='../core/delete.php' method='POST' onsubmit='return confirm(\"Are you sure you want to delete this item?\")'>
-                                            <input type='hidden' name='id' value='{$row['id']}'>
-                                            <button type='submit' class='btn btn-danger'>Verwijderen</button>
-                                        </form>
-                                    </td>
-                                  </tr>";
-                    }
-
-                    ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

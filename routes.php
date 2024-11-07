@@ -22,7 +22,12 @@ get('/kookproject/contact', path_to_include: 'views/contact.php');
 
 get('/kookproject/schedule', path_to_include: 'views/schedule.php');
 
+post('/kookproject/create_schedule', path_to_include: 'views/create_schedule.php');
+
+post('/kookproject/delete_schedule', path_to_include: 'views/delete_schedule.php');
+
 get('/kookproject/about', path_to_include: 'views/about.php');
+
 
 
 // ##################################################
