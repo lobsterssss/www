@@ -104,25 +104,30 @@ class Database
 
 
 
-    function update_schedule($id, $patient_id, $medicatie, $dosering, $datum, $tijdstip)
+    function update_schedule($id, $patient_id, $medicijn_id, $dosering, $datum, $tijdstip)
     {
-        $query = "UPDATE schedule 
-                  SET patient_id = :patient_id,
-                      medicatie = :medicatie,
-                      dosering = :dosering,
-                      datum = :datum,
-                      tijdstip = :tijdstip
-                  WHERE id = :id";
+        try {
+            $query = "UPDATE schedule 
+                      SET patient_id = :patient_id,
+                          medicijn_id = :medicijn_id,
+                          dosering = :dosering,
+                          datum = :datum,
+                          tijdstip = :tijdstip
+                      WHERE schedule_id = :id";
 
-        $stmt = $this->conn->prepare($query);
-        return $stmt->execute([
-            ':id' => $id,
-            ':patient_id' => $patient_id,
-            ':medicatie' => $medicatie,
-            ':dosering' => $dosering,
-            ':datum' => $datum,
-            ':tijdstip' => $tijdstip
-        ]);
+            $stmt = $this->conn->prepare($query);
+            return $stmt->execute([
+                ':id' => $id,
+                ':patient_id' => $patient_id,
+                ':medicijn_id' => $medicijn_id,
+                ':dosering' => $dosering,
+                ':datum' => $datum,
+                ':tijdstip' => $tijdstip
+            ]);
+        } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage());
+            return false;
+        }
     }
 
     function delete_schedule($id)
@@ -135,12 +140,15 @@ class Database
 
     function get_schedule_by_id($id)
     {
-        $query = "SELECT * FROM schedule WHERE id = :id";
+        $query = "SELECT schedule.*, patienten.patient_naam, medicijnen.medicijn_naam 
+                  FROM schedule 
+                  JOIN patienten ON schedule.patient_id = patienten.patient_id 
+                  JOIN medicijnen ON schedule.medicijn_id = medicijnen.medicijn_id 
+                  WHERE schedule.schedule_id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
 
 
 
