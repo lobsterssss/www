@@ -9,7 +9,7 @@ $db->close();
         unset($result['password']);
         unset($result[2]);
         $_SESSION["user"] = $result;
-        header("HX-location:/");
+        header("HX-location:./");
     else:
         print("wrong password or email");
     endif;
