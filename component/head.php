@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/public/css/style.css"> 
+    <link href='https://fonts.googleapis.com/css?family=Staatliches' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Unica One' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/public/css/default.css"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/navigation.css"> 
     <title>MediTurn</title>
     <script src="https://unpkg.com/htmx.org@2.0.3"></script>
 </head>

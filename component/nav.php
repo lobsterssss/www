@@ -1,17 +1,18 @@
 <?php
     function navigation() {
 ?>
-<header>
-
-		<div class="MediTurn" style="margin-right: 90px;">
-			<b>MediTurn</b>
-		</div>
-		<ul class="menu">
-			<li><a href="/kookproject">Home</a></li>
-            <li><a href="./medicijnen">Medicijnen</a></li>
-			<li><a href="./database">Database</a></li>
-			<li><a href="./schedule">Schema</a></li>
-			<li><a href="./about">Over ons</a></li>
-			<li><a href="./contact">Contact</a></li>
+	<nav>
+		<a href="/kookproject">
+			<div>
+				<img src="/public/img/logo.png" alt="logo">
+				<h1>MediTurn</h1>
+			</div>
+		</a>
+		<ul>
+			<a href="/kookproject"><li><p>Home</p></li></a>
+			<a href="./medicijnen"><li><p>Medicijnen</p></li></a>
+			<a href="./about"><li><p>Over ons</p></li></a>
+			<a href="./login"><li><p>Login</p></li></a>
 		</ul>
-	</header>	<?php } ?>
+	</nav>
+<?php } ?>
