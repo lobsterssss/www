@@ -1,0 +1,25 @@
+main {
+    width: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+    > header {
+        width: 33%;
+
+    }
+    > article {
+        width: 50%;
+    }
+}
+
+.video {
+    width: 100%;
+    aspect-ratio: 2;
+
+}
+
+@media only screen and (max-width: 400px) {
+    
+}
