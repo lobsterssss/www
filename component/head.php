@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Unica One' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="/public/css/default.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/navigation.css"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css"> 
     <title>MediTurn</title>
     <script src="https://unpkg.com/htmx.org@2.0.3"></script>
 </head>

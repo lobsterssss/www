@@ -32,3 +32,19 @@ nav{
 
 
 }
+
+@media only screen and (max-width: 480px) {
+    nav{
+        justify-content: unset;
+        padding: 0px 4px ;
+        
+        div, ul {
+            gap: 2px;
+        }
+
+        ul > a:first-child {
+            display: none;
+        }
+    
+    }
+}
