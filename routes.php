@@ -5,6 +5,7 @@ include __DIR__.'/database/database.php';
 
 // components
 include __DIR__.'/component/nav.php';
+include __DIR__.'/component/footer.php';
 include __DIR__.'/component/head.php';
 
 // ##################################################

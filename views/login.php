@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php head(); ?>
+<?= head(); ?>
 
     <body>
         <?= navigation(); ?>
@@ -20,5 +20,6 @@
                 </form>
             </div>
         </main>
+        <?= footer(); ?>
     </body>
 </html>
