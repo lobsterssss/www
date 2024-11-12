@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/public/css/default.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/navigation.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/main.css"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/form.css"> 
     <title>MediTurn</title>
     <script src="https://unpkg.com/htmx.org@2.0.3"></script>
 </head>

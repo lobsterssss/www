@@ -3,6 +3,7 @@ main {
     display: flex;
     align-items: center;
     text-align: center;
+    justify-content: center;
     flex-direction: column;
 
     > header {
@@ -20,6 +21,6 @@ main {
 
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 460px) {
     
 }

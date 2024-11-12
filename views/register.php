@@ -4,7 +4,7 @@
 <body>
 <?= navigation(); ?>
     <main>
-        <div>
+        <div class="form-container">
             <h1>Register</h1>
             <form hx-post="./register" hx-target="#target">
                 <p id="target"></p>
@@ -26,8 +26,10 @@
 
                 <label for="userPass">re-wachtwoord</label>
                 <input name="userrePass" id="userrePass" type="password" placeholder="re-wachtwoord">
-
-                <button type="submit">Registreer</button>
+                <div>
+                    <a href="./login">al een acount, login</a>
+                    <button type="submit">Registreer</button>
+                </div>
             </form>
         </div>
     </main>
