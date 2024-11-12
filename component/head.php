@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Unica One' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="/public/css/default.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/navigation.css"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/footer.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/main.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/form.css"> 
     <title>MediTurn</title>

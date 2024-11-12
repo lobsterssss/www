@@ -1,0 +1,82 @@
+/* footer {
+    width: -webkit-fill-available;
+    background-color: #5A94FF;
+    height: 8rem;
+    display: inline-flex;
+    justify-content: space-around;
+
+} */
+
+footer {
+    background-color: #5A94FF;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+
+
+    div {
+        flex: 1;
+        min-width: 200px;  /* Helps the columns stack on smaller screens */
+        margin: 10px;
+        > div {
+            width: -webkit-fill-available;
+            justify-content: space-between;
+            display: inline-flex;
+
+        }
+    }
+
+    .socials {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        ul li {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+
+    p, ul {
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        margin: 0;
+    }
+
+    ul li {
+        margin: 5px 0;
+    }
+    
+     a {
+        text-decoration: none;
+    }
+    
+     a:hover {
+        text-decoration: underline;
+    }
+
+    img {
+        height: 32px;
+        width: auto;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

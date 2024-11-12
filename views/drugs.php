@@ -76,7 +76,7 @@ head();
             </p>
         </a>
     </div>
-
+    <?= footer(); ?>
 </body>
 
 </html>
