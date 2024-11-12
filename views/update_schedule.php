@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($id && $patient_id && $medicijn_id && $dosering && $datum && $tijdstip) {
         // Update the schedule
         $success = $db->update_schedule($id, $patient_id, $medicijn_id, $dosering, $datum, $tijdstip);
-        
+
         if ($success) {
             header('Location: /kookproject/schedule?message=updated');
             exit;

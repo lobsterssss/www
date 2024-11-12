@@ -99,7 +99,10 @@ class Database
         $query = "INSERT INTO schedule (patient_id, medicijn_id, dosering, datum, tijdstip) 
               VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$patient_id, $medicijn_id, $dosering, $datum, $tijdstip]);
+        $success = $stmt->execute([$patient_id, $medicijn_id, $dosering, $datum, $tijdstip]);
+
+        // Return true if the execution was successful, false otherwise
+        return $success;
     }
 
 

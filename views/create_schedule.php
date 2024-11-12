@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the form action is 'create'
     if (isset($_POST['action']) && $_POST['action'] === 'create') {
         // Get form data and create the schedule
-        $db->create_schedule(
+        $success = $db->create_schedule(
             $_POST['patient_id'],
             $_POST['medicijn_id'],
             $_POST['dosering'],
@@ -21,8 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['tijdstip']
         );
 
-        // Redirect back to schedule.php after creation
-        header("Location: /kookproject/schedule");
+        // Redirect back to schedule.php after creation with a success message
+        if ($success) {
+            header("Location: /kookproject/schedule?message=created");
+        } else {
+            header("Location: /kookproject/schedule?message=create_failed");
+        }
         exit();
     }
 }

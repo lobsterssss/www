@@ -76,10 +76,9 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="datum" class="form-label">Datum</label>
-                            <input type="date" name="datum" class="form-control"
+                            <input type="date" name="datum" id="datum" class="form-control"
                                 value="<?php echo $editRecord ? $editRecord['datum'] : ''; ?>" required>
                         </div>
-
                         <div class="col-md-6 mb-3">
                             <label for="tijdstip" class="form-label">Tijdstip</label>
                             <input type="time" name="tijdstip" class="form-control"
@@ -101,13 +100,38 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
             </div>
         </div>
 
-        <?php if (isset($_GET['message'])): ?>
-            <div class="alert <?php echo $_GET['message'] === 'deleted' ? 'alert-success' : 'alert-danger'; ?>">
-                <?php
-                echo $_GET['message'] === 'deleted' ? 'Schedule deleted successfully.' : 'Failed to delete schedule.';
-                ?>
-            </div>
-        <?php endif; ?>
+        <?php
+        if (isset($_GET['message'])) {
+            switch ($_GET['message']) {
+                case 'created':
+                    echo "<p>Schedule created successfully.</p>";
+                    break;
+                case 'updated':
+                    echo "<p>Schedule updated successfully.</p>";
+                    break;
+                case 'update_failed':
+                    echo "<p>Failed to update schedule.</p>";
+                    break;
+                case 'deleted':
+                    echo "<p>Schedule deleted successfully.</p>";
+                    break;
+                case 'delete_failed':
+                    echo "<p>Failed to delete schedule.</p>";
+                    break;
+                case 'create_failed':
+                    echo "<p>Failed to create schedule.</p>";
+                    break;
+                case 'invalid_date':
+                    echo "<p>Cannot select a past date.</p>";
+                    break;
+                    // Add other cases as needed
+                default:
+                    echo "<p>Unknown action.</p>";
+                    break;
+            }
+        }
+        ?>
+
 
         <!-- Schedule Table -->
         <div class="card">
@@ -204,25 +228,28 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var editButtons = document.querySelectorAll('button[data-bs-target="#editScheduleModal"]');
+            // Set minimum date to today's date
+            const today = new Date().toISOString().split('T')[0];
 
-            editButtons.forEach(function(button) {
+            // Set for Create Form
+            const createDateInput = document.querySelector('input[name="datum"]');
+            if (createDateInput) {
+                createDateInput.setAttribute('min', today);
+            }
+
+            // Set for Edit Form in Modal
+            const editDateInput = document.getElementById('edit-datum');
+            if (editDateInput) {
+                editDateInput.setAttribute('min', today);
+            }
+
+            // Populate edit modal data on click
+            document.querySelectorAll('button[data-bs-target="#editScheduleModal"]').forEach(button => {
                 button.addEventListener('click', function() {
-                    var scheduleId = button.getAttribute('data-id');
-
-                    // Fetch the data using AJAX
+                    const scheduleId = button.getAttribute('data-id');
                     fetch(`./get_schedule_data?id=${scheduleId}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
+                        .then(response => response.json())
                         .then(data => {
-                            if (data.error) {
-                                throw new Error(data.error);
-                            }
-
                             document.getElementById('edit-schedule-id').value = data.id;
                             document.getElementById('edit-patient-id').value = data.patient_id;
                             document.getElementById('edit-medicijn-id').value = data.medicijn_id;
@@ -238,6 +265,14 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
             });
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById("datum").setAttribute('min', today);
+        });
+    </script>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
