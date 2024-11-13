@@ -5,6 +5,7 @@ include __DIR__.'/database/database.php';
 
 // components
 include __DIR__.'/component/nav.php';
+include __DIR__.'/component/footer.php';
 include __DIR__.'/component/head.php';
 
 // ##################################################
@@ -14,19 +15,17 @@ include __DIR__.'/component/head.php';
 // Static GET
 // In the URL -> http://localhost
 // The output -> Index
-get('/kookproject', 'views/index.php');
+get('/', 'views/index.php');
 
-get('/kookproject/medicijnen', 'views/drugs.php');
+get('/contact', 'views/contact.php');
 
-get('/kookproject/contact', 'views/contact.php');
+get('/about', 'views/about.php');
 
-get('/kookproject/about', 'views/about.php');
+get('/login', 'views/login.php');
+post('/login', 'php/login.php');
 
-get('/kookproject/login', 'views/login.php');
-post('/kookproject/login', 'php/login.php');
-
-get('/kookproject/register', 'views/register.php');
-post('/kookproject/register', 'php/register.php');
+get('/register', 'views/register.php');
+post('/register', 'php/register.php');
 
 
 // ##################################################

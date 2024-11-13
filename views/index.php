@@ -12,27 +12,26 @@ head();
 
 ?>
 
-    <div>
-        <img src="" alt="logo placeholder" style="width:20%;height:20%;" class="center">
-    </div>
+    <main> 
+        <header>
+                <h1>Welkom bij MediTurn!</h1>
+                <p>MediTurn biedt slimme medicijnkastjes die ouderen helpen om veilig en tijdig hun medicatie te nemen</p>
 
-    <div>
-        <b>
-            <h1>Welkom bij MediTurn!</h1>
-            <p> Herinneringen op tijd, voor uw gezondheid.</p>
-        </b>
-    </div>
+        </header>
+        <article>
 
-    <div class="card-container">
-        <a href="placeholder.txt.html" class="vertical-card">
-            <img src="" alt="MediTurn machine" class="card_img" style="width:40%; height: auto;">
-            <h1 class="drugs">MediTurn machine</h1>
-            <p class="info">
-                info over MediTurn machine
-            </p>
-        </a>
-    </div>
-
+                <h1>MediTurn machine</h1>
+                <p>
+                    de MediTurn medicijnenkast helpt ouderen om op tijd de goede medicijnen te nemen. Dit doet de kast door middel van een alarm dat afgaat op het moment dat de medicijnen uit de kast komen. het tijdstip dat de medicijnen uit de kast komen wordt ingesteld door de gebruiker.
+                    daarnaast kan je op de medicijnenkast aangeven hoe je je voelt door middel van smileys. dit kan je dan later bespreken met je arts.
+                </p>
+        </article>
+        <article>
+                <h1>Wil je meer weten over ons product? bekijk dan onderstaande video</h1>
+                <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=loxHPCsYC-Pt3oGN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </article>
+    </main>
+    <?= footer(); ?>
 </body>
 
 </html>

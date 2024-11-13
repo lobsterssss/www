@@ -1,0 +1,53 @@
+nav{
+    display: flex;
+    background-color: #5A94FF;
+    justify-content: space-between;
+    padding: 0px 18px ;
+    
+    a {
+        transition: 1s;
+    }
+    a:hover{ 
+
+            background-color: #196aff;
+
+    }
+
+    div, ul {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        gap: 6px;
+    }
+
+    img{ 
+        height: 3.8rem;
+        width: auto;
+        }
+
+    ul > a {
+        align-items: center;
+        font-weight: bold;
+        display: flex;
+        height: 100%;
+        padding: 0px 8px; 
+    }
+
+
+}
+
+@media only screen and (max-width: 480px) {
+    nav{
+        justify-content: unset;
+        padding: 0px 4px ;
+        
+        div, ul {
+            gap: 2px;
+        }
+
+        ul > a:first-child {
+            display: none;
+        }
+    
+    }
+}

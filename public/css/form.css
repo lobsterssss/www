@@ -1,0 +1,47 @@
+.form-container {
+    border-radius: 8px;
+    border: #5A94FF 2px solid;
+    background-color: #CEE9FF;
+}
+
+form {
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: 'Unica One';
+
+    label {
+        padding-left: 8px;
+        text-align: start;
+    }
+
+    input {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        margin: 4px;
+        padding: 8px;
+    }
+
+    button {
+        border-radius: 8px;
+        text-align: center;
+        background-color: #5A94FF;
+        border: 0px;
+        padding: 8px 16px;
+
+        &::hover {
+            background-color: #196aff;
+        }
+    }
+
+    div {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        gap:16px;
+    }
+
+    
+}
