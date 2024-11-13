@@ -28,6 +28,7 @@ nav{
         display: flex;
         height: 100%;
         padding: 0px 8px; 
+        transition: 1s;
     }
 
 

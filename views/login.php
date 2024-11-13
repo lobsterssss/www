@@ -14,7 +14,7 @@
                     <label for="userPass">Password</label>
                     <input name="userPass" id="userPass" type="password" placeholder="Password">
                     <div>
-                        <a href="./register">nog geen acount, registreer</a>
+                        <a href="/register">nog geen acount, registreer</a>
                         <button type="submit">Login</button>
                     </div>
                 </form>
