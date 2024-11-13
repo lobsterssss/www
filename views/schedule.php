@@ -69,7 +69,7 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
                         <div class="col-md-4 mb-3">
                             <label for="dosering" class="form-label">Dosering</label>
                             <input type="number" name="dosering" class="form-control"
-                                value="<?php echo $editRecord ? $editRecord['dosering'] : ''; ?>" required>
+                                value="<?php echo $editRecord ? $editRecord['dosering'] : ''; ?>" required  min="1">
                         </div>
                     </div>
 
@@ -202,7 +202,7 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
                                         </div>
                                         <div class="mb-3">
                                             <label for="edit-dosering" class="form-label">Dosering</label>
-                                            <input type="number" name="dosering" id="edit-dosering" class="form-control" required>
+                                            <input type="number" name="dosering" id="edit-dosering" class="form-control" required  min="1">
                                         </div>
                                         <div class="mb-3">
                                             <label for="edit-datum" class="form-label">Datum</label>
