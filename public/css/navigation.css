@@ -3,7 +3,10 @@ nav{
     background-color: #5A94FF;
     justify-content: space-between;
     padding: 0px 18px ;
-
+    
+    a {
+        transition: 1s;
+    }
     a:hover{ 
 
             background-color: #196aff;
@@ -28,7 +31,6 @@ nav{
         display: flex;
         height: 100%;
         padding: 0px 8px; 
-        transition: 1s;
     }
 
 
