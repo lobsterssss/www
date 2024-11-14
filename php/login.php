@@ -6,8 +6,8 @@ $db = new Database;
 $result = $db->get_login($_POST["userEmail"], $_POST["userPass"]);
 $db->close();
     if(!empty($result)):
-        unset($result['password']);
-        unset($result[2]);
+        unset($result['wachtwoord']);
+        unset($result['klant_id']);
         $_SESSION["user"] = $result;
         header("HX-location:./");
     else:

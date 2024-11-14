@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once __DIR__.'/router.php';
 include __DIR__.'/database/database.php';
 
@@ -21,11 +21,16 @@ get('/contact', 'views/contact.php');
 
 get('/about', 'views/about.php');
 
+if(!isset($_SESSION["user"])):
+
 get('/login', 'views/login.php');
 post('/login', 'php/login.php');
 
 get('/register', 'views/register.php');
 post('/register', 'php/register.php');
+
+endif;
+get('/logout', 'php/logout.php');
 
 
 // ##################################################
