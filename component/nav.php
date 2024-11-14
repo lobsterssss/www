@@ -21,8 +21,16 @@
 				<li class="dropdown">
 				<span><?= $_SESSION["user"]["naam"] ?></span>
 					<ul class="dropdown-content">
-					<a><li><p>settings</p></li></a>
-					<a href="/logout"><li><p>logout</p></li></a>
+						<a href="/patienten">
+							<li>
+								<p>patienten</p>
+							</li>
+						</a>
+						<a href="/logout">
+							<li>
+								<p>logout</p>
+							</li>
+						</a>
 					</ul>
 				</li>
 
