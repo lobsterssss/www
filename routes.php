@@ -7,6 +7,7 @@ include __DIR__.'/database/database.php';
 include __DIR__.'/component/nav.php';
 include __DIR__.'/component/footer.php';
 include __DIR__.'/component/head.php';
+include __DIR__.'/component/patient.php';
 
 // ##################################################
 // ##################################################
@@ -22,15 +23,24 @@ get('/contact', 'views/contact.php');
 get('/about', 'views/about.php');
 
 if(!isset($_SESSION["user"])):
+    get('/login', 'views/login.php');
+    post('/login', 'php/login.php');
 
-get('/login', 'views/login.php');
-post('/login', 'php/login.php');
+    get('/register', 'views/register_user.php');
+    post('/register', 'php/register_user.php');
 
-get('/register', 'views/register.php');
-post('/register', 'php/register.php');
+else:
+    get('/settings', 'views/settings.php');
+    post('/settings', 'php/settings.php');
 
+    get('/patienten', 'views/patienten.php');
+    // post('/patienten', 'php/register_klant.php');
+
+    get('/register', 'component/register_klant.php');
+    post('/register', 'php/register_klant.php');
+
+    get('/logout', 'php/logout.php');
 endif;
-get('/logout', 'php/logout.php');
 
 
 // ##################################################

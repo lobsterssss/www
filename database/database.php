@@ -23,6 +23,21 @@ class Database {
     $this->conn = null;
    }
 
+
+   function set_user($email, $password, $name)
+   {
+
+       $temp = $this->conn->query("SELECT accounts.Email FROM accounts WHERE accounts.Email = '$email'")->fetchAll();
+       if(!isset($temp[0])){
+
+           $password = $this->encryped($password);
+           $result = $this->conn->query("INSERT INTO accounts (Email, GB, WW) VALUES ('$email','$name','$password')");
+           // if($result)
+           //     $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
+           return $result;
+       }
+   }
+
     function get_Login($email, $password)
     {
         //check validation AND users.verified = 1
@@ -40,21 +55,28 @@ class Database {
         return $result;
     }
 
-    function get_user($name, $id)
+    function get_current_user($id)
     {
         //check validation AND users.verified = 1
-        $result = $this->conn->query("SELECT users.email, users.userName , user_settings.public FROM users INNER JOIN user_settings ON users.id = user_settings.user  WHERE  users.userName = '$name' AND users.id = $id")->fetch();
+        $result = $this->conn->query("SELECT users.naam, users.email, users.achternaam, users.telefoon, users.leeftijd, users.woonplaats, users.woonplaats, users.postcode, users.adres FROM users WHERE users.klant_id = $id")->fetch();
         return $result;
     }
 
-    function set_user($email, $password, $name, $lastname, $telefoon)
+    function get_all_user_customers()
+    {
+                //check validation AND users.verified = 1
+                $result = $this->conn->query("SELECT * FROM klanten")->fetchAll();
+                return $result;
+        
+    }
+
+    function set_klant($email, $password, $name, $lastname, $telefoon)
     {
 
         $temp = $this->conn->query("SELECT users.email FROM users WHERE users.email = '$email'")->fetchAll();
         if(!isset($temp[0])){
 
-            $password = $this->encryped($password);
-            $result = $this->conn->query("INSERT INTO users (email, naam, achternaam, wachtwoord, telefoon) VALUES ('$email','$name','$lastname','$password','$telefoon')");
+            $result = $this->conn->query("INSERT INTO users (email, naam, achternaam, telefoon) VALUES ('$email','$name','$lastname','$telefoon')");
             // if($result)
             //     $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
             return $result;
