@@ -30,10 +30,10 @@
         <div class="socials">
             <h3>ons volgen?</h3>
             <ul>
-                <a href="https://www.facebook.com"><li><img src="./public/img/facebook.png" alt="facebook">facebook</li></a>
-                <a href="https://www.instagram.com"><li><img src="./public/img/instagram.png" alt="instagram">instagram</li></a>
-                <a href="https://www.x.com"><li><img src="./public/img/x.png" alt="x">x</li></a>
-                <a href="https://www.linkedin.com"><li><img src="./public/img/linkedin.png" alt="linkedin">linkedin</li></a>
+                <a target="_blank" href="https://www.facebook.com"><li><img src="./public/img/facebook.png" alt="facebook">facebook</li></a>
+                <a target="_blank" href="https://www.instagram.com"><li><img src="./public/img/instagram.png" alt="instagram">instagram</li></a>
+                <a target="_blank"href="https://www.x.com"><li><img src="./public/img/x.png" alt="x">x</li></a>
+                <a target="_blank" href="https://www.linkedin.com"><li><img src="./public/img/linkedin.png" alt="linkedin">linkedin</li></a>
             </ul>
         </div>
 	</footer>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once __DIR__.'/router.php';
 include __DIR__.'/database/database.php';
 
@@ -7,6 +7,7 @@ include __DIR__.'/database/database.php';
 include __DIR__.'/component/nav.php';
 include __DIR__.'/component/footer.php';
 include __DIR__.'/component/head.php';
+include __DIR__.'/component/patient.php';
 
 // ##################################################
 // ##################################################
@@ -21,11 +22,33 @@ get('/contact', 'views/contact.php');
 
 get('/about', 'views/about.php');
 
-get('/login', 'views/login.php');
-post('/login', 'php/login.php');
+if(!isset($_SESSION["user"])):
+    get('/login', 'views/login.php');
+    post('/login', 'php/login.php');
 
-get('/register', 'views/register.php');
-post('/register', 'php/register.php');
+    get('/register', 'views/register_user.php');
+    post('/register', 'php/register_user.php');
+
+else:
+    get('/settings', 'views/settings.php');
+    post('/settings', 'php/settings.php');
+
+    get('/patienten', 'views/patienten.php');
+
+    get('/register', 'component/klanten/register_klant.php');
+    post('/register', 'php/register_klant.php');
+
+    get('/$Klant_ID/edit', 'component/klanten/edit_klant .php');
+    post('/$Klant_ID/edit', 'view/register_klant.php');
+
+    get('/delete/$Klant_ID', 'component/klanten/delete_klant.php');
+    post('/delete/$Klant_ID', 'php/klanten/delete_klant.php');
+
+    get('/patienten_lijst', 'component/klanten/klanten_list.php');
+
+
+    get('/logout', 'php/logout.php');
+endif;
 
 
 // ##################################################

@@ -1,0 +1,24 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+    backdrop-filter: blur(10px); /* Blur effect */
+    z-index: 0; /* Places it behind other content */
+
+    > div {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: 25%;
+        left: 45%;
+        flex-direction: column;
+        max-width: 24rem;
+    }
+}
+
+.hidden {
+    display: none;
+}

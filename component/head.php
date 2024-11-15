@@ -11,6 +11,11 @@
     <link rel="stylesheet" type="text/css" href="/public/css/footer.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/main.css"> 
     <link rel="stylesheet" type="text/css" href="/public/css/form.css"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/table.css"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/button.css"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/content_blocker.css"> 
+    <script src="https://kit.fontawesome.com/9db69b1acd.js" crossorigin="anonymous"></script>
+    <script src="public/javascript/script.js"></script>
     <title>MediTurn</title>
     <script src="https://unpkg.com/htmx.org@2.0.3"></script>
 </head>
