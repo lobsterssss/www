@@ -1,6 +1,6 @@
 <?php
 $db = new Database;
-$patienten = $db->get_all_user_customers($_SESSION["user"]["klant_id"]);
+$patienten = $db->get_all_user_customers($_SESSION["user"]["Acount_ID"]);
 $db->close();
 
 ?>
@@ -22,30 +22,11 @@ head();
         <article>
             <h1>Patienten</h1>
                <button hx-get="/register" hx-target=".overlay" onclick="toggle_visabilty()">New patient</button>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Leeftijd</th>
-                        <th>Woonplaats</th>
-                        <th>Adres</th>
-                        <th>Postcode</th>
-                        <th>telefoon</th>
-                        <th>E-mail</th>
-                        <th>edit / destroy</th>                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        foreach($patienten as $patient):
-                            patient($patient);
-                        endforeach;
-                    ?>
-                </tbody>
-            </table>
+               <table hx-get="/patienten_lijst" hx-trigger="load, every 5s" hx-target="table">
+               </table>
         </article>  
     </main>  
-    <div class="overlay hidden" onclick="toggle_visabilty()"></div>
+    <div class="overlay hidden"></div>
     <?= footer(); ?>
 </body>
 

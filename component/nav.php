@@ -19,7 +19,7 @@
 			else:
 				?>
 				<li class="dropdown">
-				<span><?= $_SESSION["user"]["naam"] ?></span>
+				<span><?= $_SESSION["user"]["GB"] ?></span>
 					<ul class="dropdown-content">
 						<a href="/patienten">
 							<li>

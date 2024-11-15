@@ -23,7 +23,6 @@ class Database {
     $this->conn = null;
    }
 
-
    function set_user($email, $password, $name)
    {
 
@@ -41,10 +40,10 @@ class Database {
     function get_Login($email, $password)
     {
         //check validation AND users.verified = 1
-        $result = $this->conn->query("SELECT users.naam, users.klant_id, users.wachtwoord FROM users WHERE users.email = '$email'")->fetch();
+        $result = $this->conn->query("SELECT accounts.GB, accounts.Acount_ID, accounts.WW FROM accounts WHERE accounts.Email = '$email'")->fetch();
         if(!$result)
         return;
-        if($this->decryped($result["wachtwoord"]) == $password)
+        if($this->decryped($result["WW"]) == $password)
         return $result;
     }
 
@@ -82,6 +81,24 @@ class Database {
             return $result;
         }
     }
+
+    function edit_klant($email, $password, $name, $lastname, $telefoon)
+    {
+
+
+            $result = $this->conn->query("UPDATE users set (email, naam, achternaam, telefoon) VALUES ('$email','$name','$lastname','$telefoon') where ");
+            // if($result)
+            //     $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
+            return $result;
+    }
+
+    function delete_klant($klant_id)
+    {
+        $result = $this->conn->query("DELETE FROM klanten WHERE Klant_ID = '$klant_id' ");
+        return $result;
+    }
+
+
 
 
     //encryption

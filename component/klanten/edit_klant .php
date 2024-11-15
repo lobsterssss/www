@@ -1,6 +1,6 @@
 
         <div class="form-container">
-            <h1>Register</h1>
+            <h1>Register patient</h1>
             <form hx-post="./register" hx-target="#target">
                 <p id="target"></p>
 
@@ -17,7 +17,6 @@
                 <input name="userTel" id="userTel" type="tel" placeholder="Telefoon" minlength="10" required>
 
                 <div>
-                    <a href="./login">al een acount, login</a>
                     <button type="submit">Registreer</button>
                 </div>
             </form>

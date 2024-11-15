@@ -34,10 +34,18 @@ else:
     post('/settings', 'php/settings.php');
 
     get('/patienten', 'views/patienten.php');
-    // post('/patienten', 'php/register_klant.php');
 
-    get('/register', 'component/register_klant.php');
+    get('/register', 'component/klanten/register_klant.php');
     post('/register', 'php/register_klant.php');
+
+    get('/$Klant_ID/edit', 'component/klanten/edit_klant .php');
+    post('/$Klant_ID/edit', 'view/register_klant.php');
+
+    get('/delete/$Klant_ID', 'component/klanten/delete_klant.php');
+    post('/delete/$Klant_ID', 'php/klanten/delete_klant.php');
+
+    get('/patienten_lijst', 'component/klanten/klanten_list.php');
+
 
     get('/logout', 'php/logout.php');
 endif;

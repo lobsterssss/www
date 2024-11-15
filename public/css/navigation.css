@@ -63,7 +63,7 @@ nav{
             gap: 2px;
         }
 
-        ul > a:first-child {
+        > ul > a:first-child {
             display: none;
         }
     
