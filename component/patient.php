@@ -2,13 +2,16 @@
     function patient($patient) {
 ?>
     <tr>
-        <th><?= $patient["Naam_Klant"] . " " . $patient["Achternaam"] ?></th>
-        <th><?= $patient["Leeftijd"] ?></th>
-        <th><?= $patient["Woonplaats"] ?></th>
-        <th><?= $patient["Adres"] ?></th>
-        <th><?= $patient["Postcode"] ?></th>
-        <th><a href="tel:<?= $patient["Telefoonnummer"] ?>"><?= $patient["Telefoonnummer"] ?></a></th>
-        <th><a href="email:<?= $patient["E-mail"] ?>"><?= $patient["E-mail"] ?></a></th>
-        <th><button></button> <button></button></th>
+        <td><?= $patient["Naam_Klant"] . " " . $patient["Achternaam"] ?></td>
+        <td><?= $patient["Leeftijd"] ?></td>
+        <td><?= $patient["Woonplaats"] ?></td>
+        <td><?= $patient["Adres"] ?></td>
+        <td><?= $patient["Postcode"] ?></td>
+        <td><a href="tel:<?= $patient["Telefoonnummer"] ?>"><?= $patient["Telefoonnummer"] ?></a></td>
+        <td><a href="email:<?= $patient["E-mail"] ?>"><?= $patient["E-mail"] ?></a></td>
+        <td>
+            <button hx-post="/<?= $patient["Klant_ID"] ?>/edit" hx-target=".overlay" onclick="toggle_visabilty()"><i class="fa-solid fa-pen-to-square"></i>
+            </button> <button hx-get="/delete/<?= $patient["Klant_ID"] ?>" hx-target=".overlay" onclick="toggle_visabilty()"><i class="fa-solid fa-trash"></i></button>
+        </td>
     </tr>
 <?php } ?>
