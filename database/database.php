@@ -40,7 +40,7 @@ class Database
     function get_Login($email, $password)
     {
         //check validation AND users.verified = 1
-        $result = $this->conn->query("SELECT Accounts.GB, Accounts.Acount_ID, Accounts.WW FROM Accounts WHERE Accounts.Email = '$email'")->fetch();
+        $result = $this->conn->query("SELECT Accounts.GB, Accounts.Account_ID, Accounts.WW FROM Accounts WHERE Accounts.`E-mail` = '$email'")->fetch();
         if(!$result)
         return;
         if($this->decryped($result["WW"]) == $password)
