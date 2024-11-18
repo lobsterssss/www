@@ -1,6 +1,6 @@
 <?php
 $db = new Database;
-$patienten = $db->get_all_user_customers($_SESSION["user"]["Acount_ID"]);
+$patienten = $db->get_all_user_customers();
 $db->close();
 
 ?>

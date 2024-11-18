@@ -8,6 +8,8 @@ include __DIR__.'/component/nav.php';
 include __DIR__.'/component/footer.php';
 include __DIR__.'/component/head.php';
 include __DIR__.'/component/patient.php';
+include __DIR__.'/component/planning.php';
+
 
 // ##################################################
 // ##################################################
@@ -38,6 +40,9 @@ else:
     get('/kookproject/register', 'component/klanten/register_klant.php');
     post('/kookproject/register', 'php/register_klant.php');
 
+    get('/kookproject/create-planning', 'component/planningen/create_planning.php');
+    post('/kookproject/create-planning', 'php/planningen/create_planning.php');
+
     // get('/$Klant_ID/edit', 'component/klanten/edit_klant .php');
     // post('/$Klant_ID/edit', 'view/register_klant.php');
 
@@ -45,6 +50,11 @@ else:
     post('/kookproject/delete/$Klant_ID', 'php/klanten/delete_klant.php');
 
     get('/kookproject/patienten_lijst', 'component/klanten/klanten_list.php');
+
+    get('/kookproject/planningen', 'views/planning.php');
+
+    get('/kookproject/planning_lijst', 'component/planningen/planning_list.php');
+
 
     post('/kookproject/api/send_feedback', 'php/api/delete_klant.php');
 
