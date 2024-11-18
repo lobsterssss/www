@@ -26,11 +26,11 @@ class Database
    function set_user($email, $password, $name)
    {
 
-       $temp = $this->conn->query("SELECT Accounts.E-mail FROM Accounts WHERE Accounts.E-mail = '$email'")->fetchAll();
+       $temp = $this->conn->query("SELECT `E-mail` FROM Accounts WHERE `E-mail` = '$email'")->fetchAll();
        if(!isset($temp[0])){
 
            $password = $this->encryped($password);
-           $result = $this->conn->query("INSERT INTO Accounts (E-mail, GB, WW) VALUES ('$email','$name','$password')");
+           $result = $this->conn->query("INSERT INTO Accounts (`E-mail`, GB, WW) VALUES ('$email','$name','$password')");
            // if($result)
            //     $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
            return $result;
@@ -40,7 +40,7 @@ class Database
     function get_Login($email, $password)
     {
         //check validation AND users.verified = 1
-        $result = $this->conn->query("SELECT Accounts.GB, Accounts.Acount_ID, Accounts.WW FROM Accounts WHERE Accounts.Email = '$email'")->fetch();
+        $result = $this->conn->query("SELECT Accounts.GB, Accounts.Account_ID, Accounts.WW FROM Accounts WHERE Accounts.`E-mail` = '$email'")->fetch();
         if(!$result)
         return;
         if($this->decryped($result["WW"]) == $password)
@@ -71,10 +71,10 @@ class Database
     function set_klant($email, $name, $lastname, $telefoon)
     {
 
-        $temp = $this->conn->query("SELECT Klanten.email FROM Klanten WHERE Klanten.Email = '$email'")->fetchAll();
+        $temp = $this->conn->query("SELECT Klanten.Email FROM Klanten WHERE Klanten.Email = '$email'")->fetchAll();
         if (!isset($temp[0])) {
 
-            $result = $this->conn->query("INSERT INTO Klanten (email, Naam_Klant, Achternaam, Telefoonnummer) VALUES ('$email','$name','$lastname','$telefoon')");
+            $result = $this->conn->query("INSERT INTO Klanten (Email, Naam_Klant, Achternaam, Telefoonnummer) VALUES ('$email','$name','$lastname','$telefoon')");
 
             return $result;
         }
@@ -112,7 +112,7 @@ class Database
 
     function delete_klant($klant_id)
     {
-        $result = $this->conn->query("DELETE FROM klanten WHERE Klant_ID = '$klant_id' ");
+        $result = $this->conn->query("DELETE FROM Klanten WHERE Klant_ID = '$klant_id' ");
         return $result;
     }
 
