@@ -1,4 +1,9 @@
+<?php
+$db = new Database;
+$patienten = $db->get_all_user_customers($_SESSION["user"]["Acount_ID"]);
+$db->close();
 
+?>
 
 <!DOCTYPE html>
 <html>

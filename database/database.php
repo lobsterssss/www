@@ -38,6 +38,20 @@ class Database
        }
    }
 
+   function set_user($email, $password, $name)
+   {
+
+       $temp = $this->conn->query("SELECT accounts.Email FROM accounts WHERE accounts.Email = '$email'")->fetchAll();
+       if(!isset($temp[0])){
+
+           $password = $this->encryped($password);
+           $result = $this->conn->query("INSERT INTO accounts (Email, GB, WW) VALUES ('$email','$name','$password')");
+           // if($result)
+           //     $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
+           return $result;
+       }
+   }
+
     function get_Login($email, $password)
     {
         //check validation AND users.verified = 1
@@ -83,12 +97,20 @@ class Database
         }
     }
 
-    function get_all_patients()
+    function edit_klant($email, $password, $name, $lastname, $telefoon)
     {
-        $query = "SELECT patient_id, patient_naam FROM patienten";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+            $result = $this->conn->query("UPDATE users set (email, naam, achternaam, telefoon) VALUES ('$email','$name','$lastname','$telefoon') where ");
+            // if($result)
+            //     $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
+            return $result;
+    }
+
+    function delete_klant($klant_id)
+    {
+        $result = $this->conn->query("DELETE FROM klanten WHERE Klant_ID = '$klant_id' ");
+        return $result;
     }
 
     function get_all_medicijnen()
