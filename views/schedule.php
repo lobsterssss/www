@@ -154,18 +154,20 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
                         <tbody>
                             <?php foreach ($schedule as $row): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($row['patient_naam']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['medicijn_naam']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['dosering']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['datum']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['tijdstip']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Naam_Klant']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Medicatie']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Inname_frequentie']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Dosering']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Beperking']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Datum']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Tijd']); ?></td>
                                     <td>
                                         <div class="btn-group">
                                             <form method="POST" action="./delete_schedule" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                                <input type="hidden" name="id" value="<?php echo $row['schedule_id']; ?>">
+                                                <input type="hidden" name="id" value="<?php echo $row['Plan_ID']; ?>">
                                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                             </form>
-                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editScheduleModal" data-id="<?php echo $row['schedule_id']; ?>">
+                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editScheduleModal" data-id="<?php echo $row['Plan_ID']; ?>">
                                                 Edit
                                             </button>
                                         </div>

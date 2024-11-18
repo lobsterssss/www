@@ -10,13 +10,21 @@ class Database
 
     function __construct()
     {
-        // $hostname = '195.168.0.3:3306';
-        $username = 'root';
-        $password = '';
-        $dbname = 'test_kookproject';
+        $hostname = '192.168.155.208:3306';
+        $username = 'KADIR';
+        $password = 'RIAQCTzg5!_@g[sJ';
+        $dbname = 'MediTurn';
         $this->binary = hex2bin('000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f');
-        $this->conn = new PDO("mysql:dbname=$dbname", $username, $password);
+
+        try {
+            $this->conn = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+        } catch (PDOException $e) {
+            error_log($e->getMessage()); // Log error details
+            throw new Exception("Failed to connect to the database."); // Generic error message
+        }
     }
+
+
 
     function close()
     {
@@ -63,7 +71,7 @@ class Database
 
     function get_all_patients()
     {
-        $query = "SELECT patient_id, patient_naam FROM patienten";
+        $query = "SELECT Klant_ID, Naam_Klant FROM Klanten";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -71,19 +79,29 @@ class Database
 
     function get_all_medicijnen()
     {
-        $query = "SELECT medicijn_id, medicijn_naam FROM medicijnen";
+        $query = "SELECT MediID, NaamMed FROM Medicijnen_informatie";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
+    // function get_schedule()
+    // {
+    //     $query = "SELECT schedule.*, patienten.patient_naam, medicijnen.medicijn_naam 
+    //           FROM schedule
+    //           JOIN patienten ON schedule.patient_id = patienten.patient_id
+    //           JOIN medicijnen ON schedule.medicijn_id = medicijnen.medicijn_id";  // Join on medicatie (which stores medicijn_id)
+    //     $stmt = $this->conn->prepare($query);
+    //     $stmt->execute();
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
+
     function get_schedule()
     {
-        $query = "SELECT schedule.*, patienten.patient_naam, medicijnen.medicijn_naam 
-              FROM schedule
-              JOIN patienten ON schedule.patient_id = patienten.patient_id
-              JOIN medicijnen ON schedule.medicijn_id = medicijnen.medicijn_id";  // Join on medicatie (which stores medicijn_id)
+        $query = "SELECT Planning.*, Klanten.Naam_Klant 
+                  FROM Planning 
+                  JOIN Klanten ON Planning.Klant_ID = Klanten.Klant_ID";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
