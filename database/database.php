@@ -10,11 +10,10 @@ class Database
 
     function __construct()
     {
-    $hostname = '127.0.0.1';
-    // $hostname = '195.168.0.3:3306';
-    $username = 'root';
-    $password = 'root';
-    $dbname = 'mediturn';
+    $hostname = '192.168.155.208:3306';
+    $username = 'FIN';
+    $password = '8qo)tSQb9(MZwWnE';
+    $dbname = 'MediTurn';
     $this->binary = hex2bin('000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f');
     $this->conn = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
    }
@@ -27,11 +26,11 @@ class Database
    function set_user($email, $password, $name)
    {
 
-       $temp = $this->conn->query("SELECT accounts.Email FROM accounts WHERE accounts.Email = '$email'")->fetchAll();
+       $temp = $this->conn->query("SELECT Accounts.E-mail FROM Accounts WHERE Accounts.E-mail = '$email'")->fetchAll();
        if(!isset($temp[0])){
 
            $password = $this->encryped($password);
-           $result = $this->conn->query("INSERT INTO accounts (Email, GB, WW) VALUES ('$email','$name','$password')");
+           $result = $this->conn->query("INSERT INTO Accounts (E-mail, GB, WW) VALUES ('$email','$name','$password')");
            // if($result)
            //     $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
            return $result;
@@ -41,7 +40,7 @@ class Database
     function get_Login($email, $password)
     {
         //check validation AND users.verified = 1
-        $result = $this->conn->query("SELECT accounts.GB, accounts.Acount_ID, accounts.WW FROM accounts WHERE accounts.Email = '$email'")->fetch();
+        $result = $this->conn->query("SELECT Accounts.GB, Accounts.Acount_ID, Accounts.WW FROM Accounts WHERE Accounts.Email = '$email'")->fetch();
         if(!$result)
         return;
         if($this->decryped($result["WW"]) == $password)
@@ -55,30 +54,28 @@ class Database
         return $result;
     }
 
-    function get_current_user($id)
+    function get_customer($id)
     {
         //check validation AND users.verified = 1
-        $result = $this->conn->query("SELECT users.naam, users.email, users.achternaam, users.telefoon, users.leeftijd, users.woonplaats, users.woonplaats, users.postcode, users.adres FROM users WHERE users.klant_id = $id")->fetch();
+        $result = $this->conn->query("SELECT Klanten.Naam_Klant, Klanten.Email, Klanten.Achternaam, Klanten.Telefoonnummer, Klanten.Leeftijd, Klanten.Woonplaats, Klanten.Postcode, Klanten.Adres FROM Klanten WHERE Klanten.Klant_ID = $id")->fetch();
         return $result;
     }
 
     function get_all_user_customers()
     {
                 //check validation AND users.verified = 1
-                $result = $this->conn->query("SELECT * FROM klanten")->fetchAll();
+                $result = $this->conn->query("SELECT * FROM Klanten")->fetchAll();
                 return $result;
-        
     }
 
-    function set_klant($email, $password, $name, $lastname, $telefoon)
+    function set_klant($email, $name, $lastname, $telefoon)
     {
 
-        $temp = $this->conn->query("SELECT users.email FROM users WHERE users.email = '$email'")->fetchAll();
+        $temp = $this->conn->query("SELECT Klanten.email FROM Klanten WHERE Klanten.Email = '$email'")->fetchAll();
         if (!isset($temp[0])) {
 
-            $result = $this->conn->query("INSERT INTO users (email, naam, achternaam, telefoon) VALUES ('$email','$name','$lastname','$telefoon')");
-            // if($result)
-            //     $this->conn->query("INSERT INTO user_settings (user_settings.user) SELECT users.id FROM users WHERE users.email = '$email'");
+            $result = $this->conn->query("INSERT INTO Klanten (email, Naam_Klant, Achternaam, Telefoonnummer) VALUES ('$email','$name','$lastname','$telefoon')");
+
             return $result;
         }
     }
@@ -182,8 +179,6 @@ class Database
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-
 
     //encryption
     function encryped($message)

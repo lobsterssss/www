@@ -38,8 +38,8 @@ else:
     get('/register', 'component/klanten/register_klant.php');
     post('/register', 'php/register_klant.php');
 
-    get('/$Klant_ID/edit', 'component/klanten/edit_klant .php');
-    post('/$Klant_ID/edit', 'view/register_klant.php');
+    // get('/$Klant_ID/edit', 'component/klanten/edit_klant .php');
+    // post('/$Klant_ID/edit', 'view/register_klant.php');
 
     get('/delete/$Klant_ID', 'component/klanten/delete_klant.php');
     post('/delete/$Klant_ID', 'php/klanten/delete_klant.php');

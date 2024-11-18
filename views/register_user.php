@@ -6,7 +6,7 @@
         <?= navigation(); ?>
         <main>
             <div class="form-container">
-                <h2>Login</h2>
+                <h2>Register</h2>
                 <form hx-post="./register" hx-target="#target">
                     <p id="target"></p>
                     <label for="userName">Naam</label>
