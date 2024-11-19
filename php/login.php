@@ -7,7 +7,7 @@ $result = $db->get_login($_POST["userEmail"], $_POST["userPass"]);
     if(!empty($result)):
         unset($result['WW']);
         $_SESSION["user"] = $result;
-        header("HX-location:./");
+        header("HX-location:/");
     else:
         print("wrong password or email");
         
