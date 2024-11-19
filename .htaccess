@@ -1,8 +1,6 @@
 RewriteEngine On
 
-# Allow direct access to specific files like schedule.php
-RewriteCond %{REQUEST_URI} ^/kookproject/schedule\.php [NC]
-RewriteRule ^(.*)$ - [L]  # Stop processing if the URL is /kookproject/schedule.php
+RewriteRule ^(.*)$ http://www.newdomain.com/ [R=301,L]
 
 # Add other exceptions for files if needed, e.g., login.php, profile.php
 # RewriteCond %{REQUEST_URI} ^/kookproject/anotherfile\.php [NC]
@@ -10,4 +8,4 @@ RewriteRule ^(.*)$ - [L]  # Stop processing if the URL is /kookproject/schedule.
 
 # Redirect everything else except specific static files to routes.php
 RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.webp|\.gif|\.jpeg|\.zip|\.css|\.svg|\.js|\.pdf)$
-RewriteRule (.*) routes.php [QSA,L]
+RewriteRule (.*) .php [QSA,L]

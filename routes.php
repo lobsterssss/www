@@ -18,11 +18,11 @@ include __DIR__ . '/component/planning.php';
 // Static GET
 // In the URL -> http://localhost
 // The output -> Index
-get('/', '/views/index.php');
+    get('/', '/views/index.php');
 
-get('/contact', '/views/contact.php');
+    get('/contact', '/views/contact.php');
 
-get('/about', '/views/about.php');
+    get('/about', '/views/about.php');
 
 if (!isset($_SESSION["user"])):
     get('/login', 'views/login.php');
