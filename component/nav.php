@@ -26,6 +26,11 @@
 								<p>patienten</p>
 							</li>
 						</a>
+						<a href="/kookproject/planningen">
+							<li>
+								<p>planningen</p>
+							</li>
+						</a>
 						<a href="/kookproject/logout">
 							<li>
 								<p>logout</p>

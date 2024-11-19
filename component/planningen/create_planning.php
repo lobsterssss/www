@@ -52,12 +52,24 @@
 </div>
 
 <script>
-    // JavaScript function to close the popup form
     function closeForm() {
         const formContainer = document.getElementById('planningForm');
+        const overlay = document.querySelector('.overlay'); // Selects the overlay
+
         formContainer.style.display = 'none'; // Hides the form
+        if (overlay) {
+            overlay.classList.add('hidden'); // Adds the 'hidden' class to hide the overlay
+        }
     }
 </script>
+
+<script>
+    // Get today's date in YYYY-MM-DD format
+    const today = new Date().toISOString().split('T')[0];
+    // Set the minimum date to today
+    document.getElementById('datum').min = today;
+</script>
+
 
 <style>
     .close-button {
@@ -68,8 +80,8 @@
         color: white;
         border: none;
         border-radius: 50%;
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 34px;
         font-size: 18px;
         text-align: center;
         cursor: pointer;

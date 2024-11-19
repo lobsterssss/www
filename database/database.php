@@ -138,13 +138,58 @@ class Database
         return $result;
     }
 
-    function delete_planning($Plan_id)
+    function delete_planning($Plan_ID)
     {
-        $result = $this->conn->query("DELETE FROM Planning WHERE Plan_ID = '$Plan_id' ");
+        $result = $this->conn->query("DELETE FROM Planning WHERE Plan_ID = '$Plan_ID' ");
         return $result;
     }
 
 
+
+    public function get_planning_by_id($planID)
+    {
+        $sql = "SELECT p.*, k.Naam_Klant, m.NaamMed 
+                FROM Planning p
+                JOIN Klanten k ON p.Klant_ID = k.Klant_ID
+                JOIN Medicijnen_informatie m ON p.Medi_ID = m.Medi_ID
+                WHERE p.Plan_ID = :planID";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['planID' => $planID]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function edit_planning($planID, $klantID, $medicatieID, $innameFrequentie, $datum, $tijd, $dosering, $beperking)
+    {
+        $sql = "UPDATE Planning 
+                SET Klant_ID = :klantID, 
+                    Medi_ID = :medicatieID,
+                    Inname_frequentie = :innameFrequentie,
+                    Datum = :datum,
+                    Tijd = :tijd,
+                    Dosering = :dosering,
+                    Beperking = :beperking
+                WHERE Plan_ID = :planID";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $params = [
+            'klantID' => $klantID,
+            'medicatieID' => $medicatieID,
+            'innameFrequentie' => $innameFrequentie,
+            'datum' => $datum,
+            'tijd' => $tijd,
+            'dosering' => $dosering,
+            'beperking' => $beperking,
+            'planID' => $planID
+        ];
+
+        if (!$stmt->execute($params)) {
+            throw new Exception("Error updating planning: " . implode(" ", $stmt->errorInfo()));
+        }
+
+        return true;
+    }
 
 
     function create_planning($klant_id, $medicatie, $inname_frequentie, $datum, $tijd, $dosering, $beperking)

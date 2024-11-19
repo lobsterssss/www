@@ -14,7 +14,7 @@ $db->close();
             <th>Tijd</th>
             <th>Dosering</th>
             <th>Beperking</th>
-            <th>edit / destroy</th>                        
+            <th>Edit / Verwijder</th>                        
         </tr>
     </thead>
     <tbody>

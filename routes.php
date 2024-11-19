@@ -52,6 +52,9 @@ else:
     get('/kookproject/delete/$Plan_ID', 'component/planningen/delete_planning.php');
     post('/kookproject/delete/$Plan_ID', 'php/planningen/delete_planning.php');
 
+    get('/kookproject/edit/$Plan_ID', 'component/planningen/edit_planning.php');
+    post('/kookproject/edit/$Plan_ID', 'php/planningen/edit_planning.php');
+
     get('/kookproject/patienten_lijst', 'component/klanten/klanten_list.php');
 
     get('/kookproject/planningen', 'views/planning.php');

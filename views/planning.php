@@ -21,7 +21,7 @@ head();
     <main>
         <article>
             <h1>Planningen</h1>
-               <button hx-get="/kookproject/create-planning" hx-target=".overlay" onclick="toggle_visabilty()">New Planning</button>
+               <button hx-get="/kookproject/create-planning" hx-target=".overlay" onclick="toggle_visabilty()">Nieuwe Planning</button>
                <table hx-get="/kookproject/planning_lijst" hx-trigger="load, every 5s" hx-target="table">
                </table>
         </article>  
