@@ -11,7 +11,7 @@
         <td><a href="email:<?= $patient["Email"] ?>"><?= $patient["Email"] ?></a></td>
         <td>
             <button><i class="fa-solid fa-pen-to-square"></i>
-            </button> <button hx-get="/delete/<?= $patient["Klant_ID"] ?>" hx-target=".overlay" onclick="toggle_visabilty()"><i class="fa-solid fa-trash"></i></button>
+            </button> <button hx-get="kookproject/klant-delete/<?= $patient["Klant_ID"] ?>" hx-target=".overlay" onclick="toggle_visabilty()"><i class="fa-solid fa-trash"></i></button>
         </td>
     </tr>
 <?php } ?>

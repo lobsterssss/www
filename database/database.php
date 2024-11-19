@@ -50,7 +50,7 @@ class Database
     function get_all_medicine()
     {
         //check validation AND users.verified = 1
-        $result = $this->conn->query("SELECT * FROM schedule")->fetch();
+        $result = $this->conn->query("SELECT * FROM Medicijnen_informatie")->fetchAll();
         return $result;
     }
 
@@ -70,7 +70,22 @@ class Database
 
     function get_all_plannings()
     {
-        $result = $this->conn->query("SELECT p.*, k.Naam_Klant FROM Planning p JOIN Klanten k ON p.Klant_ID = k.Klant_ID")->fetchAll();
+        $result = $this->conn->query("
+        SELECT 
+            p.*, 
+            k.Naam_Klant, 
+            m.NaamMed 
+        FROM 
+            Planning p
+        JOIN 
+            Klanten k 
+        ON 
+            p.Klant_ID = k.Klant_ID
+        JOIN 
+            Medicijnen_informatie m
+        ON 
+            p.Medi_ID = m.Medi_ID
+    ")->fetchAll();
         return $result;
     }
 
@@ -122,6 +137,13 @@ class Database
         $result = $this->conn->query("DELETE FROM klanten WHERE Klant_ID = '$klant_id' ");
         return $result;
     }
+
+    function delete_planning($Plan_id)
+    {
+        $result = $this->conn->query("DELETE FROM Planning WHERE Plan_ID = '$Plan_id' ");
+        return $result;
+    }
+
 
 
 

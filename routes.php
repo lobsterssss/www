@@ -1,14 +1,14 @@
 <?php
 session_start();
-require_once __DIR__.'/router.php';
-include __DIR__.'/database/database.php';
+require_once __DIR__ . '/router.php';
+include __DIR__ . '/database/database.php';
 
 // components
-include __DIR__.'/component/nav.php';
-include __DIR__.'/component/footer.php';
-include __DIR__.'/component/head.php';
-include __DIR__.'/component/patient.php';
-include __DIR__.'/component/planning.php';
+include __DIR__ . '/component/nav.php';
+include __DIR__ . '/component/footer.php';
+include __DIR__ . '/component/head.php';
+include __DIR__ . '/component/patient.php';
+include __DIR__ . '/component/planning.php';
 
 
 // ##################################################
@@ -24,7 +24,7 @@ get('/kookproject/contact', '/views/contact.php');
 
 get('/kookproject/about', '/views/about.php');
 
-if(!isset($_SESSION["user"])):
+if (!isset($_SESSION["user"])):
     get('/kookproject/login', 'views/login.php');
     post('/kookproject/login', 'php/login.php');
 
@@ -46,8 +46,11 @@ else:
     // get('/$Klant_ID/edit', 'component/klanten/edit_klant .php');
     // post('/$Klant_ID/edit', 'view/register_klant.php');
 
-    get('/kookproject/delete/$Klant_ID', 'component/klanten/delete_klant.php');
-    post('/kookproject/delete/$Klant_ID', 'php/klanten/delete_klant.php');
+    get('/kookproject/klant-delete/$Klant_ID', 'component/klanten/delete_klant.php');
+    post('/kookproject/klant-delete/$Klant_ID', 'php/klanten/delete_klant.php');
+
+    get('/kookproject/delete/$Plan_ID', 'component/planningen/delete_planning.php');
+    post('/kookproject/delete/$Plan_ID', 'php/planningen/delete_planning.php');
 
     get('/kookproject/patienten_lijst', 'component/klanten/klanten_list.php');
 
@@ -79,4 +82,4 @@ endif;
 // For GET or POST
 // The 404.php which is inside the views folder will be called
 // The 404.php has access to $_GET and $_POST
-any('/404','views/error/404.php');
+any('/404', 'views/error/404.php');
