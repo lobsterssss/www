@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['beperking']
         );
 
-        header("HX-Location: /kookproject/planningen");
+        header("HX-Location: /planningen");
     } catch (Exception $e) {
         echo "Error updating planning: " . htmlspecialchars($e->getMessage());
     }

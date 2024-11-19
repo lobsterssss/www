@@ -18,54 +18,54 @@ include __DIR__ . '/component/planning.php';
 // Static GET
 // In the URL -> http://localhost
 // The output -> Index
-get('/kookproject', '/views/index.php');
+get('/', '/views/index.php');
 
-get('/kookproject/contact', '/views/contact.php');
+get('/contact', '/views/contact.php');
 
-get('/kookproject/about', '/views/about.php');
+get('/about', '/views/about.php');
 
 if (!isset($_SESSION["user"])):
-    get('/kookproject/login', 'views/login.php');
-    post('/kookproject/login', 'php/login.php');
+    get('/login', 'views/login.php');
+    post('/login', 'php/login.php');
 
-    get('/kookproject/register', 'views/register_user.php');
-    post('/kookproject/register', 'php/register_user.php');
+    get('/register', 'views/register_user.php');
+    post('/register', 'php/register_user.php');
 
 else:
-    get('/kookproject/settings', 'views/settings.php');
-    post('/kookproject/settings', 'php/settings.php');
+    get('/settings', 'views/settings.php');
+    post('/settings', 'php/settings.php');
 
-    get('/kookproject/patienten', 'views/patienten.php');
+    get('/patienten', 'views/patienten.php');
 
-    get('/kookproject/register', 'component/klanten/register_klant.php');
-    post('/kookproject/register', 'php/register_klant.php');
+    get('/register', 'component/klanten/register_klant.php');
+    post('/register', 'php/klanten/register_klant.php');
 
-    get('/kookproject/create-planning', 'component/planningen/create_planning.php');
-    post('/kookproject/create-planning', 'php/planningen/create_planning.php');
+    get('/create-planning', 'component/planningen/create_planning.php');
+    post('/create-planning', 'php/planningen/create_planning.php');
 
     // get('/$Klant_ID/edit', 'component/klanten/edit_klant .php');
     // post('/$Klant_ID/edit', 'view/register_klant.php');
 
-    get('/kookproject/klant-delete/$Klant_ID', 'component/klanten/delete_klant.php');
-    post('/kookproject/klant-delete/$Klant_ID', 'php/klanten/delete_klant.php');
+    get('/klant-delete/$Klant_ID', 'component/klanten/delete_klant.php');
+    post('/klant-delete/$Klant_ID', 'php/klanten/delete_klant.php');
 
-    get('/kookproject/delete/$Plan_ID', 'component/planningen/delete_planning.php');
-    post('/kookproject/delete/$Plan_ID', 'php/planningen/delete_planning.php');
+    get('/delete/$Plan_ID', 'component/planningen/delete_planning.php');
+    post('/delete/$Plan_ID', 'php/planningen/delete_planning.php');
 
-    get('/kookproject/edit/$Plan_ID', 'component/planningen/edit_planning.php');
-    post('/kookproject/edit/$Plan_ID', 'php/planningen/edit_planning.php');
+    get('/edit/$Plan_ID', 'component/planningen/edit_planning.php');
+    post('/edit/$Plan_ID', 'php/planningen/edit_planning.php');
 
-    get('/kookproject/patienten_lijst', 'component/klanten/klanten_list.php');
+    get('/patienten_lijst', 'component/klanten/klanten_list.php');
 
-    get('/kookproject/planningen', 'views/planning.php');
+    get('/planningen', 'views/planning.php');
 
-    get('/kookproject/planning_lijst', 'component/planningen/planning_list.php');
-
-
-    post('/kookproject/api/send_feedback', 'php/api/delete_klant.php');
+    get('/planning_lijst', 'component/planningen/planning_list.php');
 
 
-    get('/kookproject/logout', '/php/logout.php');
+    post('/api/send_feedback', 'php/api/delete_klant.php');
+
+
+    get('/logout', '/php/logout.php');
 endif;
 
 

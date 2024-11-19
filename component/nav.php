@@ -9,29 +9,29 @@
 			</div>
 		</a>
 		<ul>
-			<a href="/kookproject"><li><p>Home</p></li></a>
-			<a href="/kookproject/about"><li><p>Over ons</p></li></a>
+			<a href="/"><li><p>Home</p></li></a>
+			<a href="/about"><li><p>Over ons</p></li></a>
 			<?php 
 			if(!isset($_SESSION["user"])):
 			?>
-				<a href="/kookproject/login"><li><p>Login</p></li></a>
+				<a href="/login"><li><p>Login</p></li></a>
 			<?php
 			else:
 				?>
 				<li class="dropdown">
-				<span><?= $_SESSION["user"]["GB"] ?></span>
+				<span><i class="fa-solid fa-user"></i> <?= $_SESSION["user"]["GB"] ?></span>
 					<ul class="dropdown-content">
-						<a href="/kookproject/patienten">
+						<a href="/patienten">
 							<li>
 								<p>patienten</p>
 							</li>
 						</a>
-						<a href="/kookproject/planningen">
+						<a href="/planningen">
 							<li>
 								<p>planningen</p>
 							</li>
 						</a>
-						<a href="/kookproject/logout">
+						<a href="/logout">
 							<li>
 								<p>logout</p>
 							</li>

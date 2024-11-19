@@ -13,7 +13,7 @@ try {
 <div class="form-container" id="editPlanningForm">
     <button class="close-button" onclick="closeForm()">X</button>
     <h1>Edit Planning</h1>
-    <form hx-post="/kookproject/edit/<?= htmlspecialchars($planning['Plan_ID']) ?>" hx-target="#target">
+    <form hx-post="/edit/<?= htmlspecialchars($planning['Plan_ID']) ?>" hx-target="#target">
         <p id="target"></p>
 
         <!-- Klant Dropdown -->

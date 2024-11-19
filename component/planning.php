@@ -10,8 +10,8 @@
         <td><?= $planning["Dosering"] ?></td>
         <td><?= $planning["Beperking"] ?></td>
         <td>
-            </button> <button hx-get="/kookproject/edit/<?= $planning["Plan_ID"] ?>" hx-target=".overlay" onclick="toggle_visabilty()"><i class="fa-solid fa-pen-to-square"></i></button>
-            </button> <button hx-get="/kookproject/delete/<?= $planning["Plan_ID"] ?>" hx-target=".overlay" onclick="toggle_visabilty()"><i class="fa-solid fa-trash"></i></button>
+            </button> <button hx-get="/edit/<?= $planning["Plan_ID"] ?>" hx-target=".overlay" onclick="toggle_visabilty()"><i class="fa-solid fa-pen-to-square"></i></button>
+            </button> <button hx-get="/delete/<?= $planning["Plan_ID"] ?>" hx-target=".overlay" onclick="toggle_visabilty()"><i class="fa-solid fa-trash"></i></button>
         </td>
     </tr>
 <?php } ?>

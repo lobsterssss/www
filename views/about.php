@@ -14,7 +14,6 @@ head();
     <main>
         <article>
             <div>
-                <img src="" alt="insert img from team">
                 <div>
                 <h2>Over MediTurn</h2>
 
@@ -42,13 +41,11 @@ head();
                     of de oudere de juiste medicatie heeft en deze daadwerkelijk heeft ingenomen.</p>
                 </li>
             </ul>
-            <img src="" alt="insert image of box">
             </div>
         </article>
 
             <article>
                 <div>            
-                    <img src="" alt="insert image of happy customers">
                     <div>
                         <h3>Waarom Kiezen voor Ons?</h3>
                         <p>Bij MediTurn geven we prioriteit aan de veiligheid en het welzijn van onze gebruikers.<br>
