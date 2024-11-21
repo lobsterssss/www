@@ -28,8 +28,7 @@ head();
         </article>
         <article>
                 <h1>Wil je meer weten over ons product? bekijk dan onderstaande video</h1>
-                <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=loxHPCsYC-Pt3oGN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </article>
+                <iframe src="https://www.youtube.com/embed/oQYNQnBtrXY?si=2noKxaxgvQ6ECK4J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        </article>
     </main>
     <?= footer(); ?>
 </body>
